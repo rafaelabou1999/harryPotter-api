@@ -1,0 +1,16 @@
+.all{
+  width:50%;
+  height:60vh;
+  background-color: aqua;
+}
+
+.search{
+  display: flex;
+  flex-direction: row;
+  gap:.3%;
+  justify-content:center;
+}
+
+.content{
+  background-color: red;
+}
