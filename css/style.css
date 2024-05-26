@@ -1,3 +1,7 @@
+body{
+  background-color: rgb(252, 252, 252);
+}
+
 .all{
   width:50%;
   height:60vh;
@@ -55,16 +59,64 @@ header input{
   margin-top: 8%;
   display: grid;
   grid-template-columns: repeat(4, 260px);
-  grid-template-rows: repeat(5, 260px);
+  grid-template-rows: repeat(4, 260px);
   position: relative;
+  margin-bottom: 10%;
+  
 }
 
 .content img {
+  cursor: pointer;
   width:180px;
   height:230px;
   object-fit: cover;
-  filter: saturate(40%)
+  filter: saturate(40%);
+  transition: all .3s ease-in;
 
 }
 
+.activeImg{
+  grid-template-rows: repeat(2, 260px) !important;
+  margin-bottom: 8% !important;
+}
 
+.content img:hover{
+  filter: saturate(80%)
+}
+
+
+.pages{
+  display: flex;
+  flex-direction: row;
+  gap:1%;
+  justify-content: center;
+  background-color: rgb(23, 14, 44);
+
+}
+
+.pages p{
+  font-size: 1rem;
+  background-color: aliceblue;
+  padding:1%;
+}
+
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #FFF;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+  0% {
+      transform: rotate(0deg);
+  }
+  100% {
+      transform: rotate(360deg);
+  }
+  } 
