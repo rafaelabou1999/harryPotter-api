@@ -54,9 +54,15 @@ function fetchPage(target, characteristics){
             </div>
         </div>
     `
+    content.style.height= "45vh";
     const button = document.querySelector("button");
     const house = document.querySelector("p");
+    const pages = document.querySelector(".pages");
 
+    pages.style.visibility= 'hidden';
+
+    
+    
     button.style.backgroundColor= "transparent";
     button.style.color = "rgb(23, 14, 44)";
     button.style.fontSize = "1.2rem";
@@ -85,9 +91,12 @@ function updateContent(state) {
 
 async function displayFirstPage(){
     const div = document.querySelector(".content");
+    const pages = document.querySelector('.pages');
+    pages.style.visibility= 'visible';
     div.classList.remove("activeImg")
     dataArray = await fetchData();
     dataSlice = dataArray.slice(0,16)
+   div.style.height= "auto";
     renderCharacter(dataSlice)
 }
 
