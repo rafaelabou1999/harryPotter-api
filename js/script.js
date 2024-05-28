@@ -32,7 +32,7 @@ function renderCharacter(characters){
         imgs.push(newImg);
         allCharacters.push(data);
         newImg.addEventListener("click", (e) => {
-           fetchPage(e.target, [data.name, data.house])
+           fetchPage(e.target, [data.name, data.house, data.image])
     })
    });
 }
@@ -41,10 +41,47 @@ function fetchPage(target, characteristics){
   if(target){
     history.pushState(null,null, 'character.html')
     const content = document.querySelector(".content");
-    content.innerHTML = characteristics[0]
+    console.log(characteristics[2])
+    content.innerHTML = `
+        <div>
+            <div>
+                <button>← Back</button>
+            </div>
+            <div>
+                <img src=${characteristics[2]} alt=${characteristics[0]}/>
+                <h2>${characteristics[0]}</h2>
+                <p>${characteristics[1]}</p>
+            </div>
+        </div>
+    `
+    const button = document.querySelector("button");
+    const house = document.querySelector("p");
+
+    button.style.backgroundColor= "transparent";
+    button.style.color = "rgb(23, 14, 44)";
+    button.style.fontSize = "1.2rem";
+    button.style.border = "none";
+    button.style.paddingBottom = "1rem";
+
+    house.style.backgroundColor = "#07041b";
+    house.style.padding = "1%";
+    house.style.color = "#d9d7db";
+    house.style.textAlign = "center";
+    house.style.width = "32%";
+
+    button.addEventListener("click", () => {
+        history.back();
+
+        displayFirstPage()
+    })
   }
 }
 console.log(imgs)
+function updateContent(state) {
+    // Your logic to update the content based on the state
+    console.log('Updating content for state:', state);
+}
+
 
 async function displayFirstPage(){
     const div = document.querySelector(".content");
