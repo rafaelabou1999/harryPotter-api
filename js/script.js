@@ -5,7 +5,7 @@ const secondPage = document.querySelector(".secondPage");
 const firstPage = document.querySelector(".firstPage");
 let dataJson = []; 
 let allCharacters = [];
-const imgs = [];
+let imgs = [];
 
 
 async function fetchData() {
@@ -32,62 +32,10 @@ function renderCharacter(characters){
         imgs.push(newImg);
         allCharacters.push(data);
         newImg.addEventListener("click", (e) => {
-           fetchPage(e.target, [data.name, data.house, data.image])
+           fetchPage(e.target, [data.name, data.house, data.image, data.actor])
     })
    });
 }
-
-function fetchPage(target, characteristics){
-  if(target){
-    history.pushState(null,null, 'character.html')
-    const content = document.querySelector(".content");
-    console.log(characteristics[2])
-    content.innerHTML = `
-        <div>
-            <div>
-                <button>← Back</button>
-            </div>
-            <div>
-                <img src=${characteristics[2]} alt=${characteristics[0]}/>
-                <h2>${characteristics[0]}</h2>
-                <p>${characteristics[1]}</p>
-            </div>
-        </div>
-    `
-    content.style.height= "45vh";
-    const button = document.querySelector("button");
-    const house = document.querySelector("p");
-    const pages = document.querySelector(".pages");
-
-    pages.style.visibility= 'hidden';
-
-    
-    
-    button.style.backgroundColor= "transparent";
-    button.style.color = "rgb(23, 14, 44)";
-    button.style.fontSize = "1.2rem";
-    button.style.border = "none";
-    button.style.paddingBottom = "1rem";
-
-    house.style.backgroundColor = "#07041b";
-    house.style.padding = "1%";
-    house.style.color = "#d9d7db";
-    house.style.textAlign = "center";
-    house.style.width = "32%";
-
-    button.addEventListener("click", () => {
-        history.back();
-
-        displayFirstPage()
-    })
-  }
-}
-console.log(imgs)
-function updateContent(state) {
-    // Your logic to update the content based on the state
-    console.log('Updating content for state:', state);
-}
-
 
 async function displayFirstPage(){
     const div = document.querySelector(".content");
@@ -96,11 +44,9 @@ async function displayFirstPage(){
     div.classList.remove("activeImg")
     dataArray = await fetchData();
     dataSlice = dataArray.slice(0,16)
-   div.style.height= "auto";
+    div.style.height= "auto";
     renderCharacter(dataSlice)
 }
-
-
 
 async function displaySecondPage(){
     const div = document.querySelector(".content");
@@ -124,6 +70,87 @@ async function findCharacter(){
    
 }
 
+
+
+function fetchPage(target, characteristics){
+  if(target){
+    history.pushState(null,null, 'character.html')
+    const content = document.querySelector(".content");
+    console.log(characteristics[2])
+    content.innerHTML = `
+        <div>
+            <div>
+                <button>← Back</button>
+            </div>
+            <div class="box">
+             <div>
+                <img src=${characteristics[2]} alt=${characteristics[0]}/>
+              
+             </div>
+             <div class="about">
+                <h2>${characteristics[0]}</h2>
+                <p>Actor: ${characteristics[3]}</h3>
+                <p>House: ${characteristics[1]}</p>
+
+             </div>
+            </div>
+        </div>
+
+        <style>
+            .box{
+                display:flex;
+                flex-direction:row;
+                height:230px;
+                width:800px !important;
+                font-size: 1.1rem;
+            }
+
+            .about{
+                color: rgb(23, 14, 44);
+                padding-left:1.5rem !important;
+            }
+
+            @media screen and (max-width:590px){
+                .box{
+                    display:flex;
+                    flex-direction:column;
+                    height:40vh !important;
+                    width:800px !important;
+                    font-size: 1.1rem;
+                }
+                .about{
+                    color: rgb(23, 14, 44);
+                    padding-left:0rem !important;
+                    padding-bottom: 3rem!important;
+                    height:50vh !important;
+                }
+    
+            }
+        </style>
+    `
+    content.style.height= "45vh";
+    const button = document.querySelector("button");
+    const house = document.querySelector("p");
+    const pages = document.querySelector(".pages");
+
+    pages.style.visibility= 'hidden';
+
+    
+    
+    button.style.backgroundColor= "transparent";
+    button.style.color = "rgb(23, 14, 44)";
+    button.style.fontSize = "1.2rem";
+    button.style.border = "none";
+    button.style.paddingBottom = "1rem";
+
+    
+    button.addEventListener("click", () => {
+        history.back();
+
+        displayFirstPage()
+    })
+  }
+}
 
 
 

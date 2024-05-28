@@ -1,33 +1,70 @@
-
-
 @media screen and (max-width: 1600px) {
-    .content {
+    .search{
+        width:max(25%, 200px) !important;
+        bottom:8% !important;
+        right:-160px !important;
+      }
+    
+
+    .content{
         grid-template-columns: repeat(3, 260px) !important;
         grid-template-rows: repeat(5, 260px) !important;
-
-    }      
+    }
 }
-@media screen and (max-width: 1400px) {
-    .content {
+
+@media screen and (max-width:1000px) {
+    .search{
+        width:max(25%, 200px) !important;
+        bottom:12% !important;
+        right:max(-25%, -70px) !important;
+      }
+
+      .content{
         grid-template-columns: repeat(2, 260px) !important;
-        grid-template-rows: repeat(8, 260px) !important;
-
-    }      
+        grid-template-rows: repeat(7, 260px) !important;
+    }
 }
-@media screen and (max-width: 700px) {
-    .content {
+@media screen and (max-width:800px) {
+    .search{
+        width:max(25%, 200px) !important;
+        position: fixed !important;
+        bottom:88% !important;
+        right:-0px !important;   
+        border-radius: 0px !important;
+        z-index: 100 !important;  
+        padding-bottom: .7rem !important;
+     }
+
+      .content{
         grid-template-columns: repeat(1, 260px) !important;
         grid-template-rows: repeat(16, 260px) !important;
-    }      
-    .title h2{
-        display: none;
+        margin: 0 40% !important;
     }
-      
 
-    .search{
-
-        padding: 4.2% !important;
-        width:100% !important;
+      .title h2{
+        font-size: .9rem !important;
+        position: fixed !important;
+        bottom:90.5% !important;
+        right:0; 
+        background-color: rgb(23, 14, 44) !important;
+        color:aliceblue !important;
+        z-index: 100;
+        padding-left: .7rem !important;
+        padding: .8rem;
       }
-      
+
+      .all{
+        margin: 5% 5% !important;
+      }
+
+      .pages{
+        width:150% !important;
+        margin-left: 7%;
+      }
+
+      footer{
+        margin-top: 9%;
+        margin-left: 7%;
+        width:150% !important;
+      }
 }

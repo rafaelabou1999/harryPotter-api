@@ -11,6 +11,17 @@ body{
   font-family: monospace;
 }
 
+
+header{
+  position: relative;
+}
+
+header input{
+  background-color: aliceblue;
+  padding:.2rem;
+  
+}
+
 h2{
   font-family:monospace;
   color: #07041b;
@@ -47,15 +58,6 @@ h2{
   color:aliceblue;
 }
 
-header{
-  position: relative;
-}
-
-header input{
-  background-color: aliceblue;
-  padding:.2rem;
-  
-}
 
 .content{
   margin-top: 8%;
@@ -85,7 +87,6 @@ header input{
 .content img:hover{
   filter: saturate(80%)
 }
-
 
 .pages{
   display: flex;
